@@ -36,7 +36,7 @@ class Data extends AbstractHelper
         return scandir($path);
     }
 
-    protected function convertToMegabytes($bytes, $precision = 2)
+    protected function filesizeToReadableString($bytes, $precision = 2)
     {
         $units = array('B', 'KB', 'MB', 'GB', 'TB');
 
@@ -63,7 +63,7 @@ class Data extends AbstractHelper
 
         foreach ($files as $file) {
             $logFileData[$file]['name'] = $file;
-            $logFileData[$file]['filesize'] = $this->convertToMegabytes((filesize($path . $file)));
+            $logFileData[$file]['filesize'] = $this->filesizeToReadableString((filesize($path . $file)));
             $logFileData[$file]['modTime'] = filemtime($path . $file);
             $logFileData[$file]['modTimeLong'] = date("F d Y H:i:s.", filemtime($path . $file));
             //$logFileData[$file]['downloadURL'] = $path . $file;
