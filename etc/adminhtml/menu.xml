@@ -1,0 +1,6 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="PhilTurner_LogViewer::logs" title="Log Viewer" module="PhilTurner_LogViewer" sortOrder="90" parent="Magento_Backend::system" resource="Magento_Backend::system" />
+        <add id="PhilTurner_LogViewer::report_logs" title="View Logs" module="PhilTurner_LogViewer" sortOrder="3" parent="PhilTurner_LogViewer::logs" action="logviewer/grid/index" resource="Magento_Backend::system"/>
+    </menu>
+</config>
