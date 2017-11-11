@@ -6,7 +6,7 @@ class Index extends \Magento\Framework\View\Element\Template
     /**
      * @var \PhilTurner\LogViewer\Helper\Data
      */
-    protected $_logDataHelper;
+    protected $logDataHelper;
 
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
@@ -19,13 +19,13 @@ class Index extends \Magento\Framework\View\Element\Template
         array $data = []
     )
     {
-        $this->_logDataHelper = $logDataHelper;
+        $this->logDataHelper = $logDataHelper;
         parent::__construct($context, $data);
     }
 
     public function getLogFiles()
     {
-        return $this->_logDataHelper->buildLogData();
+        return $this->logDataHelper->buildLogData();
     }
 
     public function downloadLogFiles($fileName)

@@ -8,7 +8,7 @@ class GetFile extends AbstractLog
         return null;
     }
 
-    protected function getFullPath($fileName)
+    protected function getFilePathWithFile($fileName)
     {
         return 'var/log/' . $fileName;
     }

@@ -23,7 +23,6 @@ class Index extends \Magento\Backend\App\Action
     }
 
     /**
-     * Load the page defined in view/adminhtml/layout/logviewer_grid_index.xml
      *
      * @return \Magento\Framework\View\Result\Page
      */

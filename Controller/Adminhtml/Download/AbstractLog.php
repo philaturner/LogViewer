@@ -1,5 +1,6 @@
 <?php
 namespace PhilTurner\LogViewer\Controller\Adminhtml\Download;
+
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Controller\Adminhtml\System;
 use Magento\Framework\App\Response\Http\FileFactory;
@@ -25,7 +26,7 @@ abstract class AbstractLog extends System
 
         //handles filenames being passed as params
         if ($filePath === null){
-            $filePath = $this->getFullPath($param[0]);
+            $filePath = $this->getFilePathWithFile($param[0]);
         }
 
         $filter   = new Zend_Filter_BaseName();
@@ -42,8 +43,15 @@ abstract class AbstractLog extends System
             throw new NotFoundException(__($e->getMessage()));
         }
     }
+
     /**
      * @return string
      */
     abstract protected function getFilePath();
+
+    /**
+     * @param $filename
+     * @return string
+     */
+    abstract protected function getFilePathWithFile($filename);
 }
