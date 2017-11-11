@@ -21,13 +21,8 @@ abstract class AbstractLog extends System
 
     public function execute()
     {
-        $filePath = $this->getFilePath();
         $param = $this->getRequest()->getParams();
-
-        //handles filenames being passed as params
-        if ($filePath === null){
-            $filePath = $this->getFilePathWithFile($param[0]);
-        }
+        $filePath = $this->getFilePathWithFile($param[0]);
 
         $filter   = new Zend_Filter_BaseName();
         $fileName = $filter->filter($filePath);
@@ -43,11 +38,6 @@ abstract class AbstractLog extends System
             throw new NotFoundException(__($e->getMessage()));
         }
     }
-
-    /**
-     * @return string
-     */
-    abstract protected function getFilePath();
 
     /**
      * @param $filename
