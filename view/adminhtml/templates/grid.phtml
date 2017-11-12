@@ -12,6 +12,7 @@
                     <th>Directory</th>
                     <th>Size</th>
                     <th>Last Modified</th>
+                    <th>Actions</th>
                 </tr>
             <?php foreach($logs as $log) { ?>
                 <tr>
@@ -19,9 +20,37 @@
                     <td>var/log</td>
                     <td><?php echo $log['filesize'] ?></td>
                     <td><?php echo $log['modTimeLong'] ?></td>
+                    <td>
+                        <span class="action-children"><a href="<?php echo $block->previewLogFile($log['name']); ?>" class="icon-view"></a></span>
+                        <span class="action-children"><a href="<?php echo $block->downloadLogFiles($log['name']); ?>" class="icon-export"></a></span>
+                    </td>
                 </tr>
             <?php } ?>
             </table><br>
         </div>
     </div>
 </section>
+<style>
+    .icon-view:before {
+        font-family: 'Admin Icons';
+        content: '\e60c';
+        color: #333333;
+        -webkit-font-smoothing: antialiased;
+        font-style: normal;
+        font-weight: normal;
+    }
+    .icon-export:before {
+        font-family: 'Admin Icons';
+        content: '\e601';
+        color: #333333;
+        -webkit-font-smoothing: antialiased;
+        font-style: normal;
+        font-weight: normal;
+    }
+    .action-children {
+        margin-right: 8px;
+    }
+    .action-children a:link {
+        text-decoration:  none;
+    }
+</style>

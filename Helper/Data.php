@@ -60,6 +60,21 @@ class Data extends AbstractHelper
         return round($bytes, $precision) . ' ' . $units[$pow];
     }
 
+    protected function readLastLineOfFile($filePath)
+    {
+        $fp = @fopen($filePath, "r");
+        $pos = -1;
+        $t = " ";
+        while ($t != "\n") {
+            fseek($fp, $pos, SEEK_END);
+            $t = fgetc($fp);
+            $pos = $pos - 1;
+        }
+        $t = fgets($fp);
+        fclose($fp);
+        return $t;
+    }
+
     /**
      * @return array
      */
@@ -90,5 +105,13 @@ class Data extends AbstractHelper
         $logFileData = array_slice($logFileData, 0, $maxNumOfLogs);
 
         return $logFileData;
+    }
+
+    public function getLastLinesOfFile($fileName, $numOfLines)
+    {
+        $path = $this->getPath();
+        $fullPath = $path . $fileName;
+        exec('tail -'. $numOfLines . ' ' . $fullPath, $output);
+        return implode($output);
     }
 }

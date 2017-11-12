@@ -1,5 +1,5 @@
 <?php
-namespace PhilTurner\LogViewer\Block;
+namespace PhilTurner\LogViewer\Block\View;
 
 class Index extends \Magento\Framework\View\Element\Template
 {
@@ -23,18 +23,16 @@ class Index extends \Magento\Framework\View\Element\Template
         parent::__construct($context, $data);
     }
 
-    public function getLogFiles()
+    public function getLogFile()
     {
-        return $this->logDataHelper->buildLogData();
+        $params = $this->_request->getParams();
+        return $this->logDataHelper->getLastLinesOfFile($params[0], 10);
     }
 
-    public function downloadLogFiles($fileName)
+    public function getFileName()
     {
-        return $this->getUrl('logviewer/download/getfile', [$fileName]);
+        $params = $this->_request->getParams();
+        return $params[0];
     }
 
-    public function previewLogFile($fileName)
-    {
-        return $this->getUrl('logviewer/view/index', [$fileName]);
-    }
 }
