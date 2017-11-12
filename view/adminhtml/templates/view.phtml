@@ -4,7 +4,7 @@
             <span class="title"><?php echo $block->getFileName() . __(' - last 10 lines') ?></span>
         </div>
         <div class="admin__page-section-item-content">
-            <textarea rows="11" style="width:100%"><?php echo $block->getLogFile(); ?></textarea>
+            <textarea readonly rows="11" style="width:100%"><?php echo $block->getLogFile(); ?></textarea>
         </div>
     </div>
 </section>
