@@ -60,21 +60,6 @@ class Data extends AbstractHelper
         return round($bytes, $precision) . ' ' . $units[$pow];
     }
 
-    protected function readLastLineOfFile($filePath)
-    {
-        $fp = @fopen($filePath, "r");
-        $pos = -1;
-        $t = " ";
-        while ($t != "\n") {
-            fseek($fp, $pos, SEEK_END);
-            $t = fgetc($fp);
-            $pos = $pos - 1;
-        }
-        $t = fgets($fp);
-        fclose($fp);
-        return $t;
-    }
-
     /**
      * @return array
      */
