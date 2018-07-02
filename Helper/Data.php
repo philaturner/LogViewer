@@ -97,6 +97,6 @@ class Data extends AbstractHelper
         $path = $this->getPath();
         $fullPath = $path . $fileName;
         exec('tail -'. $numOfLines . ' ' . $fullPath, $output);
-        return implode($output);
+        return implode("\n", $output);
     }
 }

@@ -1,10 +1,10 @@
 <section class="admin__page-section">
     <div class="admin__page-section-content">
         <div class="admin__page-section-item-title">
-            <span class="title"><?php echo $block->getFileName() . __(' - last 10 lines') ?></span>
+            <span class="title"><?php echo $block->getFileName() . __(' - last 500 lines') ?></span>
         </div>
         <div class="admin__page-section-item-content">
-            <textarea readonly rows="11" style="width:100%"><?php echo $block->getLogFile(); ?></textarea>
+            <textarea readonly rows="500" style="width:100%"><?php echo $block->getLogFile(); ?></textarea>
         </div>
     </div>
 </section>

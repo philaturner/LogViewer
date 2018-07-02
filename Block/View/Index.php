@@ -26,7 +26,8 @@ class Index extends \Magento\Framework\View\Element\Template
     public function getLogFile()
     {
         $params = $this->_request->getParams();
-        return $this->logDataHelper->getLastLinesOfFile($params[0], 10);
+        //TODO: Might be nice to have numOfLines be configurable somewhere within the admin dashboard - CS
+        return $this->logDataHelper->getLastLinesOfFile($params[0], 500);
     }
 
     public function getFileName()
